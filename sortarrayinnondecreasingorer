@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+#include <algorithm>
+using namespace std;
+
+void sortNonDec(vector<int>&v){
+    vector<int>ans;
+    int left_ele=0;                     // INPUT  -10,3,2,4,5
+    int right_ele=v.size()-1;
+    while(left_ele<=right_ele){
+        if(abs(v[left_ele])<abs(v[right_ele])){
+            ans.push_back(v[right_ele]*v[right_ele]);
+            right_ele--;
+        }
+        else{
+            ans.push_back(v[left_ele]*v[left_ele]);
+            left_ele++;
+        }
+        
+    }
+    //  For reverse array   //
+    reverse(ans.begin(),ans.end());
+
+    //  For Print Array //
+
+        for(int i=0;i<ans.size();i++){
+            cout<<ans[i]<<" ";
+        }
+        cout<<endl;          // OUTPUT 4,9,16,25,100
+        return;
+}
+int main(){
+
+int n;
+cin>> n;
+vector<int>v;
+for(int i=0;i<n;i++){
+    int ele;
+    cin>>ele;
+    v.push_back(ele);
+}
+sortNonDec(v);
+
+    return 0;
+}
